@@ -14,14 +14,14 @@ int get_builtin(shell_args_t *shell_args)
 {
 	int i, built_in_ret = -1;
 	builtin_dict builtin_dct[] = {
-		{"exit", _exit_emul},
+		{"alias", _alias_emul},
+		{"cd", _cd_emul},
 		{"env", _env_emul},
+		{"exit", _exit_emul},
 		{"help", _help_emul},
 		{"history", _history_emul},
 		{"setenv", _setenv_emul},
 		{"unsetenv", _unsetenv_emul},
-		{"cd", _cd_emul},
-		{"alias", _alias_emul},
 		{NULL, NULL}
 	};
 
@@ -51,28 +51,28 @@ int _cd_emul(shell_args_t *shell_args)
 
 	s = getcwd(buffer, 1024);
 	if (!s)
-		_insert_str("todo: >>getcwd failure emsg here<<\n");
+	{
+		_error_print_mesg(shell_args,
+				"getcwd() failed: No such file or directory"); }
+
 	if (!shell_args->argv[1])
 	{
 		dir = _getenv(shell_args, "home=");
 		if (!dir)
-			chdir_ret = /* todo: what should this be? */
+			chdir_ret =
 				chdir((dir = _getenv(shell_args, "pwd=")) ? dir : "/");
 		else
-			chdir_ret = chdir(dir);
-	}
+			chdir_ret = chdir(dir); }
 	else if (_strcmp(shell_args->argv[1], "-") == 0)
 	{
 		if (!_getenv(shell_args, "oldpwd="))
 		{
 			_insert_str(s);
 			_insert_character('\n');
-			return (1);
-		}
+			return (1); }
 		_insert_str(_getenv(shell_args, "oldpwd=")), _insert_character('\n');
-		chdir_ret = /* todo: what should this be? */
-			chdir((dir = _getenv(shell_args, "oldpwd=")) ? dir : "/");
-	}
+		chdir_ret =
+			chdir((dir = _getenv(shell_args, "oldpwd=")) ? dir : "/"); }
 	else
 		chdir_ret = chdir(shell_args->argv[1]);
 	if (chdir_ret == -1)
@@ -83,8 +83,7 @@ int _cd_emul(shell_args_t *shell_args)
 	else
 	{
 		_setenv(shell_args, "oldpwd", _getenv(shell_args, "pwd="));
-		_setenv(shell_args, "pwd", getcwd(buffer, 1024));
-	}
+		_setenv(shell_args, "pwd", getcwd(buffer, 1024)); }
 	return (0);
 }
 

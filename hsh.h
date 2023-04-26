@@ -42,6 +42,23 @@
 #include <unistd.h>
 
 
+#ifndef _ERROR_7E_
+#define _ERROR_7E_ 126
+#endif
+
+#ifndef _ERROR_7F_
+#define _ERROR_7F_ 127
+#endif
+
+#ifndef _ERROR_NO_ENTITY_
+#define _ERROR_NO_ENTITY_ ENOENT
+#endif
+
+#ifndef _ERROR_NO_ACCESS_
+#define _ERROR_NO_ACCESS_ EACCES
+#endif
+
+
 #ifndef _MEM_ALLOCATE_
 #define _MEM_ALLOCATE_ malloc
 #endif
