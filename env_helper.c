@@ -54,7 +54,7 @@ int _setenv_emul(shell_args_t *shell_args)
 {
 	if (shell_args->argc != 3)
 	{
-		_error_insert_str("Incorrect number of arguments\n");
+		_error_insert_str("Incorrect number of arguments.\n");
 		return (1);
 	}
 	if (_setenv(shell_args, shell_args->argv[1], shell_args->argv[2]))
@@ -77,7 +77,7 @@ int _unsetenv_emul(shell_args_t *shell_args)
 
 	if (shell_args->argc == 1)
 	{
-		_error_insert_str("Too few arguements.\n");
+		_error_insert_str("Too few arguments.\n");
 		return (1);
 	}
 	for (i = 1; i <= shell_args->argc; i++)

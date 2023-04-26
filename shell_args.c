@@ -9,10 +9,10 @@
 
 void clear_shell_args(shell_args_t *shell_args)
 {
+	shell_args->argc = 0;
 	shell_args->arg = NULL;
 	shell_args->argv = NULL;
 	shell_args->path = NULL;
-	shell_args->argc = 0;
 }
 
 

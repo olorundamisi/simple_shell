@@ -129,12 +129,13 @@ int _exit_emul(shell_args_t *shell_args)
 
 int _help_emul(shell_args_t *shell_args)
 {
-	char **arg_arr;
+	char **argument_arr;
 
-	arg_arr = shell_args->argv;
-	_insert_str("help call works. function not yet implemented \n");
+	argument_arr = shell_args->argv;
+
+	_insert_str("command not found: help\n");
 	if (0)
-		_insert_str(*arg_arr);
+		_insert_str(*argument_arr);
 	return (0);
 }
 

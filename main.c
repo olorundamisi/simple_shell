@@ -7,7 +7,7 @@
  * @arg_cnt: arg_cnt
  * @arg_vec: arg_vec
  *
- * Return: 0 S, 1 F
+ * Return: EXIT_SUCCESS if successful or EXIT_FAILURE otherwise
  */
 
 int main(int arg_cnt, char **arg_vec)
@@ -18,7 +18,7 @@ int main(int arg_cnt, char **arg_vec)
 
 	hsh_asm_file_desc(file_desc);
 
-	/* Error handling in main function... smh */
+	/* Error handling in main function... tsk. tsk. */
 	while (1 && arg_cnt == 2)
 	{
 		file_desc = open(arg_vec[1], O_RDONLY);
