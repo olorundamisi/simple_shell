@@ -10,10 +10,10 @@
   */
 int interractive(char *name, char **paths_array, char *env[])
 {
-	int is_eof = 0, status, P_SIZE = 4;
+	int is_eof = 0, status, P_SIZE = 2;
 	pid_t pid;
 	input_t *input;
-	char *arg_path, **args, prompt[] = "($) ";
+	char *arg_path, **args, prompt[] = "$ ";
 
 	while (1)
 	{
