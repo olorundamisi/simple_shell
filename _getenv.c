@@ -9,7 +9,7 @@
   */
 char *_getenv(const char *key, char *environ[])
 {
-	char *value, *env;
+	char *env;
 	int key_len;
 	int index, idx;
 

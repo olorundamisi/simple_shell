@@ -28,7 +28,8 @@ char *concat(size_t ac, ...)
 {
 	va_list arg;
 	char buff[1024], *next;
-	int num, index, len, count;
+	int num, index, len;
+	size_t count;
 
 	init_array(buff, 1024);
 	va_start(arg, ac);
@@ -57,10 +58,9 @@ char *concat(size_t ac, ...)
   */
 char *_strndup(const char *s, int n)
 {
-	int len, index;
+	int index;
 	char *new = NULL;
 
-	len = _strlen(s);
 	new = malloc(n + 1);
 	if (new == NULL)
 		return (NULL);

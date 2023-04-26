@@ -16,7 +16,7 @@
 char **split_string(char *argv, const char *delim)
 {
 	char **tokens = NULL;
-	int index, count = 0;
+	int count = 0;
 	char *token = NULL;
 
 	tokens = malloc(sizeof(char *));
